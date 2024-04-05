@@ -36,5 +36,7 @@ Zoom</br>
 
 <h2>Documentación</h1>
 La documentación se puede encontrar a lo largo de este repositorio</br>
-<a href="">Memorandum</a></br>
+  <a href="">Instrucciones Preguntas y respuestas</a></br>
+<a href="">Instrucciones Piedra Papel o tijera</a></br>
+<a href="">Instrucciones ahorcado </a></br>
 
