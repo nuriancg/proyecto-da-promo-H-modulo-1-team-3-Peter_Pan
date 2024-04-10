@@ -27,6 +27,26 @@
 <b>Margarita Torres: </b>Desarrolladora en python </br>
 <b>Diana García: </b>Desarrolladora en python </br>
 
+<h2> Criterios de aceptación</h2>
+<b> Utilizar un repositorio GitHub al que tengan acceso todos los miembros del equipo.</b></br>
+<b> Guardar en el repositorio de GitHub todo el código del desarrollo del proyecto.</b></br>
+<b> Los juegos creados tienen que estar automatizados.</b></br>
+
+<h2> Planificación del proyecto</h2>
+
+      Sprint 1:
+       - Duración: 3 sesiones de 2h 
+       - Inicio: 09/04/24 (Inclusive)
+       - Fin: 11/04/24 (Inclusive)
+       - Sprint review: 12/04/24 @13:10h 
+ 
+      Sprint 2:
+       - Duración: 3 sesiones de 2h 
+       - Inicio: 15/04/24 (Inclusive)
+       - Fin: 17/04/24 (Inclusive)
+       - Sprint review: n/a --> DEMO
+
+      DEMO / Fin del proyecto: 18/04/24 @TBC
 
 <h2>Herramientas</h2>
 Visual Studio Code </br>
@@ -37,6 +57,6 @@ Zoom</br>
 <h2>Documentación</h1>
 La documentación se puede encontrar a lo largo de este repositorio</br>
   <a href="">Instrucciones Preguntas y respuestas</a></br>
-<a href="">Instrucciones Piedra Papel o tijera</a></br>
-<a href="">Instrucciones ahorcado </a></br>
+  <a href="">Instrucciones Piedra Papel o tijera</a></br>
+  <a href="">Instrucciones ahorcado </a></br>
 
