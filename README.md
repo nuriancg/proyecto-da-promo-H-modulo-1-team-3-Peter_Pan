@@ -56,7 +56,7 @@ Zoom</br>
 
 <h2>Documentación</h1>
 La documentación se puede encontrar a lo largo de este repositorio</br>
-  <a href="">Instrucciones Preguntas y respuestas</a></br>
-  <a href="">Instrucciones Piedra Papel o tijera</a></br>
-  <a href="">Instrucciones ahorcado </a></br>
+  <a href="https://github.com/nuriancg/proyecto-da-promo-H-modulo-1-team-3-Peter_Pan/blob/main/01-Preguntas_y_respuestas/Historia_de_usuario-Preguntas_y_respuestas.ipynb">Historia de usuario Preguntas y respuestas</a></br>
+<a href="https://github.com/nuriancg/proyecto-da-promo-H-modulo-1-team-3-Peter_Pan/blob/main/02-Piedra_papel_o_tijera/Historia_de_usuario-Piedra_papel_o_tijera.ipynb">Historia de usuario Piedra Papel o tijera</a></br>
+<a href="https://github.com/nuriancg/proyecto-da-promo-H-modulo-1-team-3-Peter_Pan/blob/main/03-Ahorcado/Historia_de_usuario-Ahorcado.ipynb">Historia de usuario ahorcado </a></br>
 
