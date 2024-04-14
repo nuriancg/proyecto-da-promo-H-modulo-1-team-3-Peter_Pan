@@ -1,7 +1,8 @@
 from Juegos import Juegos
 from Juegos import Jugadores
+import os
 
-  
+os.system("clear")
 print("================================================================================")
 print("=        xxxxxxx      xxxxxxx                                                  =")
 print("=          xxxxx      xxxxx     xxxxx  xxxxx  xxx  xxx  xxxxxx  xxxxxx         =")
@@ -19,8 +20,9 @@ nombre=input("Introduce tu nombre: ")
 equipo=input("A que equipo perteneces: ")
 lista_jugadores=Jugadores()
 lista_jugadores.alta_jugador(nombre,equipo)
-print(lista_jugadores)
- 
+
+print("")
+print("")  
 print("Listado de juegos")
 print("")
 print("  1. Preguntas y respuestas")
@@ -33,7 +35,7 @@ print("")
 print("================================================")
 
     
-seleccion=input(f"{nombre} elige unos de los juegos (1,2,3 o 4 para salir): ")
+seleccion=input(f"{nombre} elige unos de los juegos (1,2,3 o 4 para salir):  ")
 
 if seleccion =="1":
     Juegos.preguntas_y_respuestas()

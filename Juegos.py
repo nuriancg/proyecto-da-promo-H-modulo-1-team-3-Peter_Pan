@@ -1,4 +1,5 @@
 import random
+import os
  
 
 class Juegos:
@@ -120,7 +121,8 @@ class Juegos:
     def __init__():
       pass
   
-  
+    os.system("clear")
+    
     print("=================================================================================")
     print("=                      _   _   _   _   _   _   _   _                            =")
     print("=                     / \ / \ / \ / \ / \ / \ / \ / \                           =")
@@ -198,16 +200,18 @@ class Juegos:
       intentos_juego = 3
       acertadas = 0
 
-      listado_preguntas =  {"¿Cuál es el río más largo de la Península Ibérica? a) Tajo b) Guadiana c) Ebro" : "a",
-      "¿Cuál es el país más pequeño del mundo? a) Francia b) Portugal c) El Vaticano" : "c", 
-      "¿Cuántos océanos hay en la Tierra?  a) Cuatro b) Cinco c) Tres" : "b",
-      "¿Qué país tiene más habitantes? a) España b) Austria c) China" : "c",
-      "¿Qué país es el más grande del mundo? a) Rusia b) Hungría c) Italia." : "a",
-      "¿Cuál es la montaña más alta del mundo? a) Everest b) Kilimanjaro c) Teide" : "a",
-      "¿Cuál es el río más largo del mundo? a) Nilo b) Amazonas c) Támesis" : "a",
-      "¿Cuál es la capital de Francia?  a) Roma b) París c) Londres" : "b",
-      "¿Dónde podemos ver las auroras boreales?  a) Finlandia b) Suiza c) Dinamarca" : "a",
-      "¿Cuál es la capital de España? a) Barcelona b) Sevilla c) Madrid" : "c"}
+      listado_preguntas =  {"¿Cuál es el río más largo de la Península Ibérica? a) Tajo b) Guadiana c) Ebro   " : "a",
+      "¿Cuál es el país más pequeño del mundo? a) Francia b) Portugal c) El Vaticano   " : "c", 
+      "¿Cuántos océanos hay en la Tierra?  a) Cuatro b) Cinco c) Tres   " : "b",
+      "¿Qué país tiene más habitantes? a) España b) Austria c) China  " : "c",
+      "¿Qué país es el más grande del mundo? a) Rusia b) Hungría c) Italia.   " : "a",
+      "¿Cuál es la montaña más alta del mundo? a) Everest b) Kilimanjaro c) Teide   " : "a",
+      "¿Cuál es el río más largo del mundo? a) Nilo b) Amazonas c) Támesis   " : "a",
+      "¿Cuál es la capital de Francia?  a) Roma b) París c) Londres   " : "b",
+      "¿Dónde podemos ver las auroras boreales?  a) Finlandia b) Suiza c) Dinamarca   " : "a",
+      "¿Cuál es la capital de España? a) Barcelona b) Sevilla c) Madrid   " : "c"}
+      
+      os.system("clear")
       
       print("===============================================================================")
       print("=                    _   _   _   _   _   _   _   _                            =")
@@ -235,8 +239,11 @@ class Juegos:
        
         if respuesta == listado_preguntas.get(pregunta):
             acertadas +=1
-            print("Has acertado la pregunta. Sigue jugando")
+            print("")
+            print("")
+            print(f"Has acertado la pregunta. Sigue jugando, ya tienes {acertadas} aciertos")
             print("=======================================")
+            print("")
             print("")
             
             listado_preguntas.pop(pregunta)
@@ -256,10 +263,13 @@ class Juegos:
     
         else:
             intentos_juego -= 1
-            if intentos_juego !=0:      
+            if intentos_juego !=0: 
+                print("")
+                print("")     
                 print(f"Has fallado la pregunta, te quedan {intentos_juego} intentos")
-                print("==============================================")
+                print("=============================================================")
                 print("\n")
+                print("")
             else:
                 print("\n")
                 print("    ===   ===          ")
@@ -274,6 +284,9 @@ class Juegos:
       
                 
   def piedra_papel_tijera():
+        
+        os.system("clear")
+        
         print("\n")
         print("\n")
         print("Piedra:                Papel:                   Tijera:           ")
