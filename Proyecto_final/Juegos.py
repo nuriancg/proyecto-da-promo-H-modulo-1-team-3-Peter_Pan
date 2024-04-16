@@ -4,6 +4,12 @@ import os
 
 class Juegos:
 
+  def __init__(self,nombre,equipo):
+      
+      self.nombre = nombre
+      self.equipo = equipo
+      pass
+
   def ahorcado():
     intentos=10
     acierto=False
@@ -118,9 +124,7 @@ class Juegos:
     ==================''','']
   
   
-    def __init__():
-      pass
-  
+     
     os.system("clear")
     
     print("=================================================================================")
@@ -283,12 +287,113 @@ class Juegos:
                 print("Te has quedado sin intentos")
       
                 
-  def piedra_papel_tijera():
+  def piedra_papel_tijera(self,nombre):
         
         os.system("clear")
         
-        print("\n")
-        print("\n")
+        opciones = ("PIEDRA", "PAPEL", "TIJERA")
+
+        # jugador1 = "usuario"
+        # jugador2 = "ordenador"
+        rondas = 1
+        jugador1_gana = 0
+        jugador2_gana = 0
+
+        print(f"\n\n¡¡¡ {nombre} bienvenid@ al juego de Piedra, Papel o Tijera !!!\n\n")
+        print(f'                       S U E R T E     \n\n\n')
+        self.figura_Piedra_Papel_o_Tijera()
+        print('')
+        input('Presiona "ENTER" para continuar')
+        os.system("clear")
+        
+        while True:
+            
+            self.figura_Piedra_Papel_o_Tijera()
+
+            print("=" * 11)               
+            print("  RONDA", rondas)
+            print("=" * 11)
+        
+            respuesta_jugador1 = input(f" {nombre} elige una opcion entre Piedra, Papel o Tijera =>  ").upper()
+            print("\n")
+               
+            if respuesta_jugador1 not in opciones:
+                print("Esa opción no es válida\n")
+                input('Presiona "ENTER" para continuar')
+                print('')
+                os.system("clear")
+                continue
+        
+            respuesta_jugador2 = random.choice(opciones)
+
+            print(f'Respuesta {nombre}      vs      Respuesta Ordenador')
+            print('      |                                |          ')
+            print('     \|/                              \|/         ')
+            print('      \'                                \'          ')
+            print(f'    {respuesta_jugador1}                           {respuesta_jugador2}\n')
+        
+            if respuesta_jugador1 == respuesta_jugador2:
+                print("\nEMPATE!\n")
+        
+            elif respuesta_jugador1 == "PIEDRA":
+                if respuesta_jugador2 == "TIJERA":
+                    print("\nPIEDRA gana a TIJERA\n")
+                    print(f"{nombre} ganas !!!\n")
+                    jugador1_gana +=1
+        
+                else:
+                    print("\nPAPEL gana a PIEDRA\n")
+                    print("El Ordenador gana!!!\n")
+                    jugador2_gana +=1
+        
+            elif respuesta_jugador1 == "PAPEL":
+                if respuesta_jugador2 == "PIEDRA":
+                    print("\nPAPEL gana a PIEDRA\n")
+                    print(f"{nombre} ganas !!!\n")
+                    jugador1_gana +=1
+            
+                else:
+                    print("\nTIJERA gana a PAPEL\n")
+                    print("El Ordenador gana!!!\n")
+                    jugador2_gana +=1
+             
+            elif respuesta_jugador1 == "TIJERA":
+                if respuesta_jugador2 == "PAPEL":
+                    print("\nTIJERA gana a PAPEL\n")
+                    print(f"{nombre} ganas !!!\n")
+                    jugador1_gana +=1
+
+                else:
+                    print("\nPIEDRA gana a TIJERA\n")
+                    print("El Ordenador gana!!!\n")
+                    jugador2_gana +=1    
+            
+            print(f"Marcador {nombre} : ", jugador1_gana)
+            print("Marcador Ordenador :", jugador2_gana)
+            print('')
+                      
+            if jugador1_gana == 3:
+                print(f"\nFelicidades {nombre} eres GANADOR@ de la partida  !!!!\n")
+                print('              :)  :)  :)  :)  :)  :)\n\n')
+                break
+    
+            if jugador2_gana == 3:
+                print("\nEl ganador de la partida es el Ordenador\n")
+                print('        :(  :(  :(  :(  :(  :(\n\n')
+                break
+            
+            input('Presiona "ENTER" para continuar')
+            print('')
+            os.system("clear")
+
+            rondas +=1
+      
+      
+    
+  def salir ():
+      exit()
+
+  def figura_Piedra_Papel_o_Tijera (self):
         print("Piedra:                Papel:                   Tijera:           ")
         print("    _______             _______                  _______          ")
         print("---'   ____)       ---'    ____)____        ---'     ____)____    ")
@@ -297,112 +402,11 @@ class Juegos:
         print("      (____)                 _______)             (____)          ")
         print("---.__(___)        ---.__________)          ---.__(___)           ")
         print("\n")
-      
-        opciones = ("piedra", "papel", "tijera")
 
-        jugador1 = "usuario"
-        jugador2 = "ordenador"
-        rondas = 1
-        jugador1_gana = 0
-        jugador2_gana = 0
-
-        print("Bienvenido al juego de Piedra, Papel o Tijera")
-
-        while True:
-    
-            print("=" * 20 + "\n")
-            
-            print("RONDA", rondas)
-            print("=" * 20 + "\n")
-    
-            print("Marcador Jugador : ", jugador1_gana)
-            print("Marcador Ordenador :", jugador2_gana)
-    
-            respuesta_jugador1 = input("Elige una opcion entre piedra, papel o tijera =>  ")
-            print("\n")
-            respuesta_jugador1 = respuesta_jugador1.lower()
-   
-            if respuesta_jugador1 not in opciones:
-                print("Esa opción no es válida")
-                continue
-        
-            respuesta_jugador2 = random.choice(opciones)
-    
-            print("Respuesta jugador =>", respuesta_jugador1)
-            print("\n")
-            print("Respuesta Ordenador =>", respuesta_jugador2)
-    
-            if respuesta_jugador1 == respuesta_jugador2:
-                print("\n")
-                print("Empate!")
-        
-            elif respuesta_jugador1 == "piedra":
-                if respuesta_jugador2 == "tijera":
-                    print("\n")
-                    print("Piedra gana a tijera")
-                    print("\n")
-                    print("El jugador gana!!!")
-                    jugador1_gana +=1
-        
-                else:
-                    print("\n")
-                    print("Papel gana a piedra")
-                    print("\n")
-                    print("El Ordenador gana!!!")
-                    jugador2_gana +=1
-        
-            elif respuesta_jugador1 == "papel":
-                if respuesta_jugador2 == "piedra":
-                    print("\n")
-                    print("Papel gana a piedra")
-                    print("\n")
-                    print("El Jugador gana!!!")
-                    print("\n")
-                    jugador1_gana +=1
-            
-                else:
-                    print("\n")
-                    print("Tijera gana a papel")
-                    print("\n")
-                    print("El Ordenador gana!!!")
-                    print("\n")
-                    jugador2_gana +=1
-             
-            elif respuesta_jugador1 == "tijera":
-                if respuesta_jugador2 == "papel":
-                    print("\n")
-                    print("Tijera gana papel")
-                    print("\n")
-                    print("El Jugador gana!!!")
-                    print("\n")
-                    jugador1_gana +=1
-            
-            else:
-                print("\n")
-                print("Piedra gana a tijera")
-                print("\n")
-                print("El Ordenador gana!!!")
-                print("\n")
-                jugador2_gana +=1
-            
-            if jugador1_gana == 3:
-                print("\n")
-                print("El ganador de la partida es el Jugador")
-                print("\n")
-                break
-    
-            if jugador2_gana == 3:
-                print("\n")
-                print("El ganador de la partida es el Ordenador")
-                print("\n")
-                break
-
-            rondas +=1
+  def xxx():
+      pass
       
       
-    
-  def salir ():
-      exit()
   
 class Jugadores:
   

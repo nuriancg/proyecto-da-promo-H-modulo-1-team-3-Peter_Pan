@@ -5,6 +5,7 @@
 from Juegos import Juegos
 from Juegos import Jugadores
 import os
+
 # Definimos una presentación gráfica del juego mediante el método print()
 os.system("clear")
 print("================================================================================")
@@ -24,8 +25,11 @@ print("")
 #Introducimos los datos del usuario para identificar al jugador y a la consola.
 #Utilizamos la función input() para preguntar al usuario:
 
-nombre=input("Introduce tu nombre: ")             
-equipo=input("A que equipo perteneces: ")
+nombre=input("Introduce tu nombre: ").capitalize()             
+equipo=input("A que equipo perteneces: ").capitalize()
+
+# Creamos la instancia de la classe Juegos
+juego = Juegos(nombre,equipo)
 
 #*MEJORA EN PROCESO: Registro de jugadores.
 #Creamos un registro de jugadores para registrar las rachas ganadas y puntuaciones:
@@ -51,23 +55,23 @@ print("================================================")
 #Le indicamos al jugador que seleccione un juego con la función input()
 #El jugador, debe indicar el dígito asociado a cada juego:1,2,3,4
     
-seleccion=input(f"{nombre} elige unos de los juegos (1,2,3 o 4 para salir):  ")
+seleccion=input(f"{nombre} elige uno de los juegos (1,2,3 o 4 para salir):  ")
 
 #creamos una sentencia de control asociada a una funcion de cada juego:
 #cada condición llama a la función del juego seleccionado.
 if seleccion =="1":
-    Juegos.preguntas_y_respuestas()
+    juego.preguntas_y_respuestas()
    
 elif seleccion == "2":
-    Juegos.ahorcado()
+    juego.ahorcado()
             
 elif seleccion =="3":
-    Juegos.piedra_papel_tijera()
+    juego.piedra_papel_tijera(nombre)
 
 #Le damos la opción al jugador de salir del juego.
 #Esta función nos saca de la consola.
 elif seleccion =="4":      
-    Juegos.salir()      
+    juego.salir()      
    
 else:
     print("No has elegido una opción valida")
