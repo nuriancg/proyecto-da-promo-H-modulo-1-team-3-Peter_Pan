@@ -315,8 +315,8 @@ class Juegos:
             print("RONDA", rondas)
             print("=" * 20 + "\n")
     
-            print("El jugador 1 Gana!!!", jugador1_gana)
-            print("El jugador 2 Gana!!!", jugador2_gana)
+            print("Marcador Jugador : ", jugador1_gana)
+            print("Marcador Ordenador :", jugador2_gana)
     
             respuesta_jugador1 = input("Elige una opcion entre piedra, papel o tijera =>  ")
             print("\n")
@@ -328,9 +328,9 @@ class Juegos:
         
             respuesta_jugador2 = random.choice(opciones)
     
-            print("Respuesta jugador 1 =>", respuesta_jugador1)
+            print("Respuesta jugador =>", respuesta_jugador1)
             print("\n")
-            print("Respuesta jugador 2 =>", respuesta_jugador2)
+            print("Respuesta Ordenador =>", respuesta_jugador2)
     
             if respuesta_jugador1 == respuesta_jugador2:
                 print("\n")
@@ -341,14 +341,14 @@ class Juegos:
                     print("\n")
                     print("Piedra gana a tijera")
                     print("\n")
-                    print("El jugador 1 gana!!!")
+                    print("El jugador gana!!!")
                     jugador1_gana +=1
         
                 else:
                     print("\n")
                     print("Papel gana a piedra")
                     print("\n")
-                    print("El jugador 2 gana!!!")
+                    print("El Ordenador gana!!!")
                     jugador2_gana +=1
         
             elif respuesta_jugador1 == "papel":
@@ -356,7 +356,7 @@ class Juegos:
                     print("\n")
                     print("Papel gana a piedra")
                     print("\n")
-                    print("El jugador 1 gana!!!")
+                    print("El Jugador gana!!!")
                     print("\n")
                     jugador1_gana +=1
             
@@ -364,7 +364,7 @@ class Juegos:
                     print("\n")
                     print("Tijera gana a papel")
                     print("\n")
-                    print("El jugador 2 gana!!!")
+                    print("El Ordenador gana!!!")
                     print("\n")
                     jugador2_gana +=1
              
@@ -373,7 +373,7 @@ class Juegos:
                     print("\n")
                     print("Tijera gana papel")
                     print("\n")
-                    print("El jugador 1 gana!!!")
+                    print("El Jugador gana!!!")
                     print("\n")
                     jugador1_gana +=1
             
@@ -381,19 +381,19 @@ class Juegos:
                 print("\n")
                 print("Piedra gana a tijera")
                 print("\n")
-                print("El jugador 2 gana!!!")
+                print("El Ordenador gana!!!")
                 print("\n")
                 jugador2_gana +=1
             
             if jugador1_gana == 3:
                 print("\n")
-                print("El ganador de la partida es el jugador 1")
+                print("El ganador de la partida es el Jugador")
                 print("\n")
                 break
     
             if jugador2_gana == 3:
                 print("\n")
-                print("El ganador de la partida es el jugador 2")
+                print("El ganador de la partida es el Ordenador")
                 print("\n")
                 break
 
