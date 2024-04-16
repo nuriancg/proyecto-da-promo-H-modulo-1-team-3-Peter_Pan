@@ -63,7 +63,7 @@ if seleccion =="1":
     juego.preguntas_y_respuestas()
    
 elif seleccion == "2":
-    juego.ahorcado()
+    juego.ahorcado(nombre)
             
 elif seleccion =="3":
     juego.piedra_papel_tijera(nombre)

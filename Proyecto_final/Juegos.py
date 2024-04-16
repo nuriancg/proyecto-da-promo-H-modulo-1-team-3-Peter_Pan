@@ -10,7 +10,7 @@ class Juegos:
       self.equipo = equipo
       pass
 
-  def ahorcado():
+  def ahorcado(self,nombre):
     intentos=10
     acierto=False
     palabra_aleatoria=""
@@ -27,104 +27,8 @@ class Juegos:
       "nube", "sol", "luna", "estrella", "mar", "océano", "lago", "montaña", "colina",
       "valle", "pradera", "desierto", "playa", "arena", "roca", "nieve", "hielo", "fuego", "viento"   
     ]
-  
-    figura=[
-      '''
-      +---------+
-      |        _|_
-      |        |__|
-      |         | 
-      |        /|\\
-      |       / | \\
-      |        / \\
-      |       /   \\
-    ==================''',
-        '''
-      +---------+
-      |        _|_
-      |        |__|
-      |         | 
-      |        /|\\
-      |       / | \\
-      |        /
-      |       /  
-    ==================''',
-            '''
-      +---------+
-      |        _|_
-      |        |__|
-      |         | 
-      |        /|\\
-      |       / | \\
-      |         |
-      |          
-    ==================''',
-            '''
-      +---------+
-      |        _|_
-      |        |__|
-      |         | 
-      |        / \\
-      |       /   \\ 
-      |         
-      |          
-    ==================''',
-            '''
-      +---------+
-      |        _|_
-      |        |__|
-      |         | 
-      |        /   
-      |       /   
-      |        
-      |        
-    ==================''',
-              '''
-      +---------+
-      |        _|_
-      |        |__|
-      |         | 
-      |          
-      |          
-      |        
-    ==================''',
-              '''
-      +---------+
-      |        _|_
-      |        |__|
-      |        
-      |          
-      |         
-      |        
-    ==================''',
-                '''
-      +---------+
-      |         |
-      |        
-      |        
-      |          
-      |         
-      |
-    ==================''',
-                    '''
-      +
-      |         
-      |         
-      |        
-      |        
-      |                  
-      |
-    ==================''',
-                        '''
-               
-              
-              
-                       
-      
-    ==================''','']
-  
-  
-     
+    
+        
     os.system("clear")
     
     print("=================================================================================")
@@ -135,8 +39,11 @@ class Juegos:
     print("=                                                                               =")
     print("=================================================================================")
 
-        
-    print ("Bienvenido al juego del ahorcado.\nEl juego consiste en adivinar la palabra oculta letra a letra.\n\n          ¡¡¡¡ EMPEZEMOS!!!")
+    print(f"\n\n              ¡¡¡ {nombre} bienvenid@ al juego del Ahoracado !!!\n\n")    
+    print ("          El juego consiste en adivinar la palabra oculta letra a letra.\n\n")
+    print("                     ¡¡¡¡   E M P E Z E M O S  !!!\n\n\n")
+    input('Presiona "ENTER" para continuar')
+    os.system("clear")
 
 
     palabra_aleatoria = random.choice(palabras_aleatorias).lower()  
@@ -149,16 +56,18 @@ class Juegos:
     while 0 < intentos <= 10 and acierto==False:
 
       # Imprimir guiones sin letras
+
+        self.figura_Ahoracado(intentos)
     
         print(f"\nEstas son las letras ocultas de la palabra:   {' '.join(lista_guiones)}")
-        print('-------------------------------------------------------')
+        #letra_usada.append(letra)
+        print(f'\n\nLas letras usadas hasta ahora son: {letra_usada}\n\n')
 
       # preguntar al usuario la ltera
-        letra=input("Introduce una letra a ver si está en la palabra.").lower()
+        letra=input("Introduce una letra a ver si está en la palabra =>  ").lower()
 
         if letra in lista_palabra:
-
-          print(f'Genial! la letra {letra.upper()} está en la palabra oculta.')
+          print(f'\n\nGenial! la letra {letra.upper()} está en la palabra oculta.')
           
           aux=0 
           for i in lista_palabra:      
@@ -169,34 +78,35 @@ class Juegos:
             
         else:
             intentos-=1
-            print(f'No, la letra {letra.upper()} no está. Te quedan {intentos} intentos.')
+            print(f'\n\nNo, la letra {letra.upper()} no está.\n\n{nombre} te quedan {intentos} intentos.')
     
       # LETRAS ACERTADAS en el espacio correspondiente en lugar de guiones  
         palabra_jugada = ''.join(lista_guiones)
     
       # Imprimir las letras usadas
         letra_usada.append(letra)
-        print(f'Las letras usadas hasta ahora son: {letra_usada}')
+        letra_usada.sort()
+        # print(f'\n\nLas letras usadas hasta ahora son: {letra_usada}\n\n')
 
-        print (figura[intentos])
+        print('\n\n\n')
+        input('Presiona "ENTER" para continuar')
+        os.system("clear")
 
         if palabra_jugada == palabra_aleatoria:
             acierto = True
 
     
     if acierto == True:   
-          print("\n")  
-          print('    ¡¡¡¡¡ GANASTE !!!!!')
-          print(f'\nLa palabra oculta era {palabra_aleatoria.upper()}.')
-          print("\n") 
-          print("\n")
+          print(f"\n  Felicidades {nombre} eres GANADOR@ de la partida  !!!!\n")
+          print(f'\n       La palabra oculta era {palabra_aleatoria.upper()}\n')
+          print('          :)  :)  :)  :)  :)  :)\n\n')
           
              
     else:
-          print("\n")
-          print('      :(  PERDISTE    :( ')
-          print(f'\nLa palabra oculta era {palabra_aleatoria.upper()}.')
-          print("\n")
+          self.figura_Ahoracado(intentos)
+          print(f"\n        Lo sentimos {nombre} PERDISTE \n")
+          print(f'\n       La palabra oculta era {palabra_aleatoria.upper()}.\n')
+          print('          :(  :(  :(  :(  :(  :(\n\n')
       
   
   def preguntas_y_respuestas():
@@ -293,8 +203,6 @@ class Juegos:
         
         opciones = ("PIEDRA", "PAPEL", "TIJERA")
 
-        # jugador1 = "usuario"
-        # jugador2 = "ordenador"
         rondas = 1
         jugador1_gana = 0
         jugador2_gana = 0
@@ -403,8 +311,119 @@ class Juegos:
         print("---.__(___)        ---.__________)          ---.__(___)           ")
         print("\n")
 
-  def xxx():
-      pass
+  def figura_Ahoracado(self, vidas):
+        figura=[
+         '''
+          +---------+
+          |        _|_
+          |        |__|
+          |         | 
+          |        /|\\
+          |       / | \\
+          |        / \\
+          |       /   \\
+         ==================''',
+           '''
+          +---------+
+          |        _|_
+          |        |__|
+          |         | 
+          |        /|\\
+          |       / | \\
+          |        /
+          |       /  
+         ==================''',
+                '''
+          +---------+
+          |        _|_
+          |        |__|
+          |         | 
+          |        /|\\
+          |       / | \\
+          |         |
+          |          
+         ==================''',
+                '''
+          +---------+
+          |        _|_
+          |        |__|
+          |         | 
+          |        / \\
+          |       /   \\ 
+          |         
+          |          
+         ==================''',
+                '''
+          +---------+
+          |        _|_
+          |        |__|
+          |         | 
+          |        /   
+          |       /   
+          |        
+          |        
+         ==================''',
+                  '''
+          +---------+
+          |        _|_
+          |        |__|
+          |         | 
+          |          
+          | 
+          |         
+          |        
+         ==================''',
+                  '''
+          +---------+
+          |        _|_
+          |        |__|
+          |        
+          |          
+          |         
+          |   
+          |     
+         ==================''',
+                    '''
+          +---------+
+          |         |
+          |        
+          |        
+          |          
+          |         
+          |
+          |
+         ==================''',
+                        '''
+          +
+          |         
+          |         
+          |        
+          |        
+          |                  
+          |
+          |
+         ==================''',
+                            '''
+                   
+              
+              
+                       
+      
+                            
+
+
+         ==================''','''         
+              
+              
+                       
+      
+                            
+
+
+                  
+         ------------------''']
+        
+        print(figura[vidas])
       
       
   
