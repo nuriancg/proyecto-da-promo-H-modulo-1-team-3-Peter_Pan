@@ -15,20 +15,7 @@ class Juegos:
 
     # Definimos una presentación gráfica del juego mediante el método print()
     os.system("clear")
-    print("================================================================================")
-    print("=        xxxxxxx      xxxxxxx                                                  =")
-    print("=          xxxxx      xxxxx     xxxxx  xxxxx  xxx  xxx  xxxxxx  xxxxxx         =")
-    print("=             xxx    xxx        x      x   x  x  xx  x  x       x              =")
-    print("=               xxx xxx         x  xx  xxxxx  x   x  x  xxxxxx  xxxxxx         =")
-    print("=             xxx    xxx        x   x  x   x  x      x  x            x         =")
-    print("=          xxxxx      xxxxx     xxxxx  x   x  x      x  xxxxxx  xxxxxx         =")
-    print("=        xxxxxxx      xxxxxxx                                                  =")
-    print("================================================================================")
-    print("")
-    print(" Bienvenido a los juegos interactivos de X Games ")
-    print("================================================")
-    print("")  
-
+    self.figura_menu_inicio()
     #Ofrecemos al usuario la lista de juegos disponibles:
 
     print("")
@@ -158,34 +145,19 @@ class Juegos:
     if acierto == True:   
           print(f"\n  Felicidades {nombre} eres GANADOR@ de la partida  !!!!\n")
           print(f'\n       La palabra oculta era {palabra_aleatoria.upper()}\n')
-          print('          :)  :)  :)  :)  :)  :)\n\n')
-    
-          
+          print('          :)  :)  :)  :)  :)  :)\n\n\n')
+                    
              
     else:
           self.figura_Ahoracado(intentos)
           print(f"\n        Lo sentimos {nombre} PERDISTE \n")
           print(f'\n       La palabra oculta era {palabra_aleatoria.upper()}.\n')
-          print('          :(  :(  :(  :(  :(  :(\n\n')
-
+          print('          :(  :(  :(  :(  :(  :(\n\n\n')
+          
     print('')
 
-    volver_a_jugar = 0
-    while volver_a_jugar == 0:
-        
-        volver_al_menu = input(f'{nombre} quieres volver a jugar?\n\nS : sí\n\nN : no\n\n=>').upper()
-
-        if volver_al_menu == 'S':
-            self.menu()
-            volver_a_jugar =1
-
-        elif volver_al_menu == 'N':
-            print(f'Muchas gracias {nombre}')
-            self.salir()
-            volver_a_jugar=1
-
-        else:
-            print('Error')
+    self.volver_a_jugar()
+              
       
   
   def preguntas_y_respuestas(self, nombre):
@@ -398,8 +370,51 @@ class Juegos:
       
       
     
-  def salir ():
+  def salir (self):
       exit()
+
+
+
+  def volver_a_jugar(self):
+      volver_a_jugar = 0
+      while volver_a_jugar == 0:
+        
+        volver_al_menu = input(f'{nombre}, quieres volver a jugar?\n\nS : sí\n\nN : no\n\n=>  ').upper()
+
+        if volver_al_menu == 'S':
+          self.menu()
+          volver_a_jugar =1
+
+        elif volver_al_menu == 'N':
+            os.system("clear")
+            print(f'\n\n   ¡¡¡  Muchas gracias {nombre}  !!! \n\n  Esperamos volver a verte pronto. \n\n       :)  :)  :)  :)  :) '  )
+            print('\n\n')
+            input('Presiona "ENTER" para continuar')
+            os.system("clear")
+            self.salir()
+            volver_a_jugar=1
+
+        else:
+            print('\n\nERROR! La opción introducida no existe.')
+            print('\n')    
+
+  def figura_menu_inicio (self):
+      print("================================================================================")
+      print("=        xxxxxxx      xxxxxxx                                                  =")
+      print("=          xxxxx      xxxxx     xxxxx  xxxxx  xxx  xxx  xxxxxx  xxxxxx         =")
+      print("=             xxx    xxx        x      x   x  x  xx  x  x       x              =")
+      print("=               xxx xxx         x  xx  xxxxx  x   x  x  xxxxxx  xxxxxx         =")
+      print("=             xxx    xxx        x   x  x   x  x      x  x            x         =")
+      print("=          xxxxx      xxxxx     xxxxx  x   x  x      x  xxxxxx  xxxxxx         =")
+      print("=        xxxxxxx      xxxxxxx                                                  =")
+      print("================================================================================")
+      print("")
+      print(" Bienvenido a los juegos interactivos de X Games ")
+      print("================================================")
+      print("")  
+
+
+
 
   def figura_Piedra_Papel_o_Tijera (self):
         print("Piedra:                Papel:                   Tijera:           ")
@@ -546,7 +561,7 @@ class Jugador:
 
 
 
-print("dibujo inicio")
+
 
 #Introducimos los datos del usuario para identificar al jugador y a la consola.
 #Utilizamos la función input() para preguntar al usuario:
@@ -556,6 +571,7 @@ equipo=input("A que equipo perteneces: ").capitalize()
 
 # Creamos la instancia de la classe Juegos
 juego = Juegos(nombre,equipo)
+juego.figura_menu_inicio()
 juego.menu()
 
 #*MEJORA EN PROCESO: Registro de jugadores.
