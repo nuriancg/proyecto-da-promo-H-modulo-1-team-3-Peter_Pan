@@ -60,7 +60,7 @@ seleccion=input(f"{nombre} elige uno de los juegos (1,2,3 o 4 para salir):  ")
 #creamos una sentencia de control asociada a una funcion de cada juego:
 #cada condición llama a la función del juego seleccionado.
 if seleccion =="1":
-    juego.preguntas_y_respuestas()
+    juego.preguntas_y_respuestas(nombre)
    
 elif seleccion == "2":
     juego.ahorcado(nombre)

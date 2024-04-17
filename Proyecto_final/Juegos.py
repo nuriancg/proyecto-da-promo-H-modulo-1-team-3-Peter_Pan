@@ -109,21 +109,21 @@ class Juegos:
           print('          :(  :(  :(  :(  :(  :(\n\n')
       
   
-  def preguntas_y_respuestas():
+  def preguntas_y_respuestas(self, nombre):
     
       intentos_juego = 3
       acertadas = 0
+      ronda = 0
 
-      listado_preguntas =  {"¿Cuál es el río más largo de la Península Ibérica? a) Tajo b) Guadiana c) Ebro   " : "a",
-      "¿Cuál es el país más pequeño del mundo? a) Francia b) Portugal c) El Vaticano   " : "c", 
-      "¿Cuántos océanos hay en la Tierra?  a) Cuatro b) Cinco c) Tres   " : "b",
-      "¿Qué país tiene más habitantes? a) España b) Austria c) China  " : "c",
-      "¿Qué país es el más grande del mundo? a) Rusia b) Hungría c) Italia.   " : "a",
-      "¿Cuál es la montaña más alta del mundo? a) Everest b) Kilimanjaro c) Teide   " : "a",
-      "¿Cuál es el río más largo del mundo? a) Nilo b) Amazonas c) Támesis   " : "a",
-      "¿Cuál es la capital de Francia?  a) Roma b) París c) Londres   " : "b",
-      "¿Dónde podemos ver las auroras boreales?  a) Finlandia b) Suiza c) Dinamarca   " : "a",
-      "¿Cuál es la capital de España? a) Barcelona b) Sevilla c) Madrid   " : "c"}
+      listado_preguntas =  {"¿Cuál es el río más largo de la Península Ibérica? \n\na) Tajo \nb) Guadiana \nc) Ebro  => " : "a",      "¿Cuál es el país más pequeño del mundo? \n\na) Francia b) Portugal c) El Vaticano  =>" : "c", 
+      "¿Cuántos océanos hay en la Tierra?  \n\na) Cuatro \nb) Cinco \nc) Tres  => " : "b",
+      "¿Qué país tiene más habitantes? \n\na) España \nb) Austria \nc) China  => " : "c",
+      "¿Qué país es el más grande del mundo? \n\na) Rusia \nb) Hungría \nc) Italia  => " : "a",
+      "¿Cuál es la montaña más alta del mundo? \n\na) Everest \nb) Kilimanjaro \nc) Teide  => " : "a",
+      "¿Cuál es el río más largo del mundo? \n\na) Nilo \nb) Amazonas \nc) Támesis  => " : "a",
+      "¿Cuál es la capital de Francia?  \n\na) Roma \nb) París \nc) Londres  => " : "b",
+      "¿Dónde podemos ver las auroras boreales?  \n\na) Finlandia \nb) Suiza \nc) Dinamarca  => " : "a",
+      "¿Cuál es la capital de España? \n\na) Barcelona \nb) Sevilla \nc) Madrid  => " : "c"}
       
       os.system("clear")
       
@@ -142,59 +142,80 @@ class Juegos:
       print("=                \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/                      =")
       print("=                                                                             =")
       print("===============================================================================")
-      print("\n")
-      print("\n")
+      
+      print(f"\n\n     ¡¡¡ {nombre} bienvenid@ al juego de Preguntas y respuestas !!!\n\n")    
+      print("                    ¡¡¡¡   E M P E Z E M O S  !!!\n\n\n")
+      input('Presiona "ENTER" para continuar')
+      os.system("clear")
       
       while intentos_juego > 0 and acertadas < 5:
+
+        os.system("clear")
+        ronda +=1
+
+        print("")            
+        print("  RONDA", ronda)
+        print("*" * 11)
+        print('\n')
     
         pregunta = random.choice(list(listado_preguntas.keys()))
-        respuesta = input(pregunta)
+        respuesta = input(pregunta).lower()
     
        
         if respuesta == listado_preguntas.get(pregunta):
             acertadas +=1
             print("")
             print("")
-            print(f"Has acertado la pregunta. Sigue jugando, ya tienes {acertadas} aciertos")
-            print("=======================================")
+            print(f"Muy bien {nombre}! Has acertado la pregunta. \n\nSigue jugando, ya tienes {acertadas} aciertos")
+            print("-------------------------------")
             print("")
             print("")
             
             listado_preguntas.pop(pregunta)
-            
+
+            input('Presiona "ENTER" para continuar')
+                  
             if acertadas ==5:
+                os.system("clear")
                 print("\n")
-                print("    ===   ===                      ")
-                print("   |  _| |  _|                     ")
-                print("   | | | | | |                     ")
-                print("    ===   ===   OLEEEEEE!!!        ")
-                print("        O                          ")
-                print("     _     _                       ")
-                print("      _____                        ")
-                print("                                   ")
-                print("Felicidades!!!, has ganado el juego")
-                print("===================================")
+                print("              ===   ===                      ")
+                print("             |  _| |  _|                     ")
+                print("             | | | | | |                     ")
+                print("              ===   ===   OLEEEEEE!!!        ")
+                print("                  O                          ")
+                print("               _     _                       ")
+                print("                _____                        ")
+                print("                                             ")
+                print("\n\n")
+                print(f"Felicidades {nombre}!!!, has ganado el juego!\n")
+                print("=============================================")
     
         else:
             intentos_juego -= 1
             if intentos_juego !=0: 
                 print("")
                 print("")     
-                print(f"Has fallado la pregunta, te quedan {intentos_juego} intentos")
-                print("=============================================================")
-                print("\n")
+                print(f"Has fallado la pregunta {nombre}.\n\nTe quedan {intentos_juego} intentos")
+                print("-------------------------------")
                 print("")
+                print("")
+                input('Presiona "ENTER" para continuar')
+                
             else:
+                os.system("clear")
                 print("\n")
-                print("    ===   ===          ")
-                print("   |  _| |  _|         ")
-                print("   | | | | | |         ")
-                print("    ===   ===   OHHH!!!")
-                print("        O              ")
-                print("       ---             ")
-                print("      |   |            ")
-                print("       ---             ")
-                print("Te has quedado sin intentos")
+                print("               ===   ===          ")
+                print("              |  _| |  _|         ")
+                print("              | | | | | |         ")
+                print("               ===   ===   OHHH!!!")
+                print("                   O              ")
+                print("                  ---             ")
+                print("                 |   |            ")
+                print("                  ---             ")
+                print("                                  ")
+                print("\n\n")
+                print(f"Lo sentimos {nombre}, te has quedado sin intentos")
+                print("=============================================")
       
                 
   def piedra_papel_tijera(self,nombre):
