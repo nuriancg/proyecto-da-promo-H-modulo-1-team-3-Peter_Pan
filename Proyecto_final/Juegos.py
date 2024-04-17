@@ -1,6 +1,6 @@
-import random
+
 import os
- 
+import random
 
 class Juegos:
 
@@ -9,6 +9,65 @@ class Juegos:
       self.nombre = nombre
       self.equipo = equipo
       pass
+
+
+  def menu(self):
+
+    # Definimos una presentación gráfica del juego mediante el método print()
+    os.system("clear")
+    print("================================================================================")
+    print("=        xxxxxxx      xxxxxxx                                                  =")
+    print("=          xxxxx      xxxxx     xxxxx  xxxxx  xxx  xxx  xxxxxx  xxxxxx         =")
+    print("=             xxx    xxx        x      x   x  x  xx  x  x       x              =")
+    print("=               xxx xxx         x  xx  xxxxx  x   x  x  xxxxxx  xxxxxx         =")
+    print("=             xxx    xxx        x   x  x   x  x      x  x            x         =")
+    print("=          xxxxx      xxxxx     xxxxx  x   x  x      x  xxxxxx  xxxxxx         =")
+    print("=        xxxxxxx      xxxxxxx                                                  =")
+    print("================================================================================")
+    print("")
+    print(" Bienvenido a los juegos interactivos de X Games ")
+    print("================================================")
+    print("")  
+
+    #Ofrecemos al usuario la lista de juegos disponibles:
+
+    print("")
+    print("")  
+    print("Listado de juegos")
+    print("")
+    print("  1. Preguntas y respuestas")
+    print("  2. Ahorcado")
+    print("  3. Piedra,papel o tijera")
+    print("  4. Salir")
+    print("")
+    print("")
+
+    print("================================================")
+
+    #Le indicamos al jugador que seleccione un juego con la función input()
+    #El jugador, debe indicar el dígito asociado a cada juego:1,2,3,4
+    
+    seleccion=input(f"{nombre} elige uno de los juegos (1,2,3 o 4 para salir):  ")
+
+    #creamos una sentencia de control asociada a una funcion de cada juego:
+    #cada condición llama a la función del juego seleccionado.
+    if seleccion =="1":
+        self.preguntas_y_respuestas(nombre)
+   
+    elif seleccion == "2":
+        self.ahorcado(nombre)
+            
+    elif seleccion =="3":
+        self.piedra_papel_tijera(nombre)
+
+    #Le damos la opción al jugador de salir del juego.
+    #Esta función nos saca de la consola.
+    elif seleccion =="4":      
+        self.salir()      
+   
+    else:
+        print("No has elegido una opción valida")
+
 
   def ahorcado(self,nombre):
     intentos=10
@@ -41,7 +100,7 @@ class Juegos:
 
     print(f"\n\n              ¡¡¡ {nombre} bienvenid@ al juego del Ahoracado !!!\n\n")    
     print ("          El juego consiste en adivinar la palabra oculta letra a letra.\n\n")
-    print("                     ¡¡¡¡   E M P E Z E M O S  !!!\n\n\n")
+    print("                     ¡¡¡¡   E M P E C E M O S  !!!\n\n\n")
     input('Presiona "ENTER" para continuar')
     os.system("clear")
 
@@ -100,6 +159,7 @@ class Juegos:
           print(f"\n  Felicidades {nombre} eres GANADOR@ de la partida  !!!!\n")
           print(f'\n       La palabra oculta era {palabra_aleatoria.upper()}\n')
           print('          :)  :)  :)  :)  :)  :)\n\n')
+    
           
              
     else:
@@ -107,6 +167,25 @@ class Juegos:
           print(f"\n        Lo sentimos {nombre} PERDISTE \n")
           print(f'\n       La palabra oculta era {palabra_aleatoria.upper()}.\n')
           print('          :(  :(  :(  :(  :(  :(\n\n')
+
+    print('')
+
+    volver_a_jugar = 0
+    while volver_a_jugar == 0:
+        
+        volver_al_menu = input(f'{nombre} quieres volver a jugar?\n\nS : sí\n\nN : no\n\n=>').upper()
+
+        if volver_al_menu == 'S':
+            self.menu()
+            volver_a_jugar =1
+
+        elif volver_al_menu == 'N':
+            print(f'Muchas gracias {nombre}')
+            self.salir()
+            volver_a_jugar=1
+
+        else:
+            print('Error')
       
   
   def preguntas_y_respuestas(self, nombre):
@@ -144,7 +223,7 @@ class Juegos:
       print("===============================================================================")
       
       print(f"\n\n     ¡¡¡ {nombre} bienvenid@ al juego de Preguntas y respuestas !!!\n\n")    
-      print("                    ¡¡¡¡   E M P E Z E M O S  !!!\n\n\n")
+      print("                    ¡¡¡¡   E M P E C E M O S  !!!\n\n\n")
       input('Presiona "ENTER" para continuar')
       os.system("clear")
       
@@ -464,3 +543,24 @@ class Jugador:
     def __init__(self, nombre, equipo):
         self.nombre = nombre
         self.equipo = equipo
+
+
+
+print("dibujo inicio")
+
+#Introducimos los datos del usuario para identificar al jugador y a la consola.
+#Utilizamos la función input() para preguntar al usuario:
+
+nombre=input("Introduce tu nombre: ").capitalize()             
+equipo=input("A que equipo perteneces: ").capitalize()
+
+# Creamos la instancia de la classe Juegos
+juego = Juegos(nombre,equipo)
+juego.menu()
+
+#*MEJORA EN PROCESO: Registro de jugadores.
+#Creamos un registro de jugadores para registrar las rachas ganadas y puntuaciones:
+
+lista_jugadores=Jugadores()
+lista_jugadores.alta_jugador(nombre,equipo)
+
