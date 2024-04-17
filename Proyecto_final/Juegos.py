@@ -1,22 +1,26 @@
+#Crear presentación para que el usuario interaccione con la lista de juegos disponibles y se inscriba como jugador.
+# Cargar módulos necesarios en el código de los juegos:
+import os               #  os proporciona funciones para interacturar con el archivo o el sistema operativo.
+import random           #  radom para generar funciones que impliquen elementos aleatorios.
 
-import os
-import random
+
+#Crear una clase donde los métodos permitirán al usuario interactuar con el juego.
 
 class Juegos:
-
+#Definir los parametros nombre y equipo:
   def __init__(self,nombre,equipo):
       
       self.nombre = nombre
       self.equipo = equipo
       pass
 
-
+#Este método menu, permite al usuario interactuar con la lista de juego
   def menu(self):
 
-    # Definimos una presentación gráfica del juego mediante el método print()
+# Definir una presentación gráfica del juego mediante el método print()
     os.system("clear")
     self.figura_menu_inicio()
-    #Ofrecemos al usuario la lista de juegos disponibles:
+#Ofrecer al usuario la lista de juegos disponibles:
 
     print("")
     print("")  
@@ -31,13 +35,13 @@ class Juegos:
 
     print("================================================")
 
-    #Le indicamos al jugador que seleccione un juego con la función input()
-    #El jugador, debe indicar el dígito asociado a cada juego:1,2,3,4
+#indicar al jugador que seleccione un juego con la función input()
+#El jugador, debe indicar el dígito asociado a cada juego:1,2,3,4
     
     seleccion=input(f"{nombre} elige uno de los juegos (1,2,3 o 4 para salir):  ")
 
-    #creamos una sentencia de control asociada a una funcion de cada juego:
-    #cada condición llama a la función del juego seleccionado.
+#crear una sentencia de control asociada a una funcion de cada juego:
+#cada condición llama a la función del juego seleccionado.
     if seleccion =="1":
         self.preguntas_y_respuestas(nombre)
    
@@ -47,14 +51,15 @@ class Juegos:
     elif seleccion =="3":
         self.piedra_papel_tijera(nombre)
 
-    #Le damos la opción al jugador de salir del juego.
-    #Esta función nos saca de la consola.
+#dar la opción al jugador de salir del juego.
+    
     elif seleccion =="4":      
-        self.salir()      
+        self.salir()      #Esta función saca al jugador de la consola.
    
     else:
-        print("No has elegido una opción valida")
+        print("No has elegido una opción valida") 
 
+#Definir los parámetros del juego Ahorcado:
 
   def ahorcado(self,nombre):
     intentos=10
@@ -75,8 +80,9 @@ class Juegos:
     ]
     
         
-    os.system("clear")
-    
+    os.system("clear")  #Limpiar pantalla.
+
+    #Imprir rótulo del juego seleccionado.
     print("=================================================================================")
     print("=                      _   _   _   _   _   _   _   _                            =")
     print("=                     / \ / \ / \ / \ / \ / \ / \ / \                           =")
@@ -92,33 +98,32 @@ class Juegos:
     os.system("clear")
 
 
-    palabra_aleatoria = random.choice(palabras_aleatorias).lower()  
-    palabra_guiones = "_"*len(palabra_aleatoria)
-    lista_palabra=list(palabra_aleatoria)
-    lista_guiones=list(palabra_guiones)
+    palabra_aleatoria = random.choice(palabras_aleatorias).lower()  #Genera una palabra aleatoria de las definidas antes.
+    palabra_guiones = "_"*len(palabra_aleatoria)         #oculta la palabra. Imprime un '_' por cada letra de la palabra.
+    lista_palabra=list(palabra_aleatoria)                #guarda la palabra seleccionada
+    lista_guiones=list(palabra_guiones)                  #guarda la palabra oculta 
 
-
+#Crear un bucle limitado por los aciertos e intentos
     
     while 0 < intentos <= 10 and acierto==False:
 
       # Imprimir guiones sin letras
-
         self.figura_Ahoracado(intentos)
     
         print(f"\nEstas son las letras ocultas de la palabra:   {' '.join(lista_guiones)}")
-        #letra_usada.append(letra)
+      #Imprime las letras seleccionadas por el usuario durante el juego.
         print(f'\n\nLas letras usadas hasta ahora son: {letra_usada}\n\n')
 
-      # preguntar al usuario la ltera
+      # preguntar al usuario la letra
         letra=input("Introduce una letra a ver si está en la palabra =>  ").lower()
-
+      #Usamos el condicional para buscar la letra seleccionada en la palabra oculta.
         if letra in lista_palabra:
           print(f'\n\nGenial! la letra {letra.upper()} está en la palabra oculta.')
-          
-          aux=0 
+      #crear un bucle for para buscar la letra en la palabra ocualta.   
+          aux=0                           #metemos el indice en la variable aux.
           for i in lista_palabra:      
-            if i == letra:
-                lista_guiones[aux]=letra
+            if i == letra:                #Si encuentra coincidencia.
+                lista_guiones[aux]=letra  #Sustituye en la palabra oculta el '_' localizada con el indice, por la letra.
 
             aux += 1
             
