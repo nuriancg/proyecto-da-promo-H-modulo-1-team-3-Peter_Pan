@@ -326,7 +326,7 @@ class Juegos:
             print('      \'                                \'          ')
             print(f'    {respuesta_jugador1}                           {respuesta_jugador2}\n') #imprime respuestas del jugador y aleatoria
             #Crea sentencia de control que busca coincidencia con las respuestas.
-            #Define las coincidencias ganadoras.
+            #Define las coincidencias ganadoras.m
             if respuesta_jugador1 == respuesta_jugador2:
                 print("\nEMPATE!\n")
         
