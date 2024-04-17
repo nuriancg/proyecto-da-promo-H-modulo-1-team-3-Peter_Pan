@@ -203,6 +203,7 @@ class Juegos:
 
         os.system("clear")
         ronda +=1
+        intentos_pregunta=0
 
         print("")            
         print("  RONDA", ronda)
@@ -212,38 +213,27 @@ class Juegos:
         pregunta = random.choice(list(listado_preguntas.keys()))
         respuesta = input(pregunta).lower()
     
-       
-        if respuesta == listado_preguntas.get(pregunta):
-            acertadas +=1
-            print("")
-            print("")
-            print(f"Muy bien {nombre}! Has acertado la pregunta. \n\nSigue jugando, ya tienes {acertadas} aciertos")
-            print("-------------------------------")
-            print("")
-            print("")
-            
-            listado_preguntas.pop(pregunta)
-
-            input('Presiona "ENTER" para continuar')
-                  
-            if acertadas ==5:
-                os.system("clear")
-                print("\n")
-                print("              ===   ===                      ")
-                print("             |  _| |  _|                     ")
-                print("             | | | | | |                     ")
-                print("              ===   ===   OLEEEEEE!!!        ")
-                print("                  O                          ")
-                print("               _     _                       ")
-                print("                _____                        ")
-                print("                                             ")
-                print("\n\n")
-                print(f"Felicidades {nombre}!!!, has ganado el juego!\n")
-                print("=============================================")
-    
-        else:
-            intentos_juego -= 1
-            if intentos_juego !=0: 
+        while intentos_pregunta<2:
+            if respuesta == listado_preguntas.get(pregunta):
+                acertadas +=1
+                print("")
+                print("")
+                print(f"Muy bien {nombre}! Has acertado la pregunta. \n\nSigue jugando, ya tienes {acertadas} aciertos")
+                print("-------------------------------")
+                print("")
+                print("")
+                intentos_pregunta=2
+                listado_preguntas.pop(pregunta)
+                input('Presiona "ENTER" para continuar')
+                
+            elif intentos_pregunta==0:
+                intentos_pregunta +=1
+                print("Te queda un intento para acertar la pregunta")
+                print("")
+                respuesta = input(pregunta).lower() 
+            else:
+                intentos_pregunta+=1
+                intentos_juego-=1
                 print("")
                 print("")     
                 print(f"Has fallado la pregunta {nombre}.\n\nTe quedan {intentos_juego} intentos")
@@ -251,8 +241,25 @@ class Juegos:
                 print("")
                 print("")
                 input('Presiona "ENTER" para continuar')
-                
-            else:
+        
+            
+                  
+      if acertadas ==5:
+            os.system("clear")
+            print("\n")
+            print("              ===   ===                      ")
+            print("             |  _| |  _|                     ")
+            print("             | | | | | |                     ")
+            print("              ===   ===   OLEEEEEE!!!        ")
+            print("                  O                          ")
+            print("               _     _                       ")
+            print("                _____                        ")
+            print("                                             ")
+            print("\n\n")
+            print(f"Felicidades {nombre}!!!, has ganado el juego!\n")
+            print("=============================================")
+    
+      else:
                 os.system("clear")
                 print("\n")
                 print("               ===   ===          ")
