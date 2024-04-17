@@ -13,25 +13,10 @@ class Juegos:
   def menu(self):
 
     # Definimos una presentación gráfica del juego mediante el método print()
-    os.system("clear")
-    print("================================================================================")
-    print("=        xxxxxxx      xxxxxxx                                                  =")
-    print("=          xxxxx      xxxxx     xxxxx  xxxxx  xxx  xxx  xxxxxx  xxxxxx         =")
-    print("=             xxx    xxx        x      x   x  x  xx  x  x       x              =")
-    print("=               xxx xxx         x  xx  xxxxx  x   x  x  xxxxxx  xxxxxx         =")
-    print("=             xxx    xxx        x   x  x   x  x      x  x            x         =")
-    print("=          xxxxx      xxxxx     xxxxx  x   x  x      x  xxxxxx  xxxxxx         =")
-    print("=        xxxxxxx      xxxxxxx                                                  =")
-    print("================================================================================")
-    print("")
-    print(" Bienvenido a los juegos interactivos de X Games ")
-    print("================================================")
-    print("")  
-
+    
+    self.figura_menu_inicio()
     #Ofrecemos al usuario la lista de juegos disponibles:
 
-    print("")
-    print("")  
     print("Listado de juegos")
     print("")
     print("  1. Preguntas y respuestas")
@@ -157,34 +142,19 @@ class Juegos:
     if acierto == True:   
           print(f"\n  Felicidades {nombre} eres GANADOR@ de la partida  !!!!\n")
           print(f'\n       La palabra oculta era {palabra_aleatoria.upper()}\n')
-          print('          :)  :)  :)  :)  :)  :)\n\n')
-    
-          
+          print('          :)  :)  :)  :)  :)  :)\n\n\n')
+                    
              
     else:
           self.figura_Ahoracado(intentos)
           print(f"\n        Lo sentimos {nombre} PERDISTE \n")
           print(f'\n       La palabra oculta era {palabra_aleatoria.upper()}.\n')
-          print('          :(  :(  :(  :(  :(  :(\n\n')
-
+          print('          :(  :(  :(  :(  :(  :(\n\n\n')
+          
     print('')
 
-    volver_a_jugar = 0
-    while volver_a_jugar == 0:
-        
-        volver_al_menu = input(f'{nombre} quieres volver a jugar?\n\nS : sí\n\nN : no\n\n=>').upper()
-
-        if volver_al_menu == 'S':
-            self.menu()
-            volver_a_jugar =1
-
-        elif volver_al_menu == 'N':
-            print(f'Muchas gracias {nombre}')
-            self.salir()
-            volver_a_jugar=1
-
-        else:
-            print('Error')
+    self.volver_a_jugar()
+              
       
   
   def preguntas_y_respuestas(self, nombre):
@@ -193,15 +163,15 @@ class Juegos:
       acertadas = 0
       ronda = 0
 
-      listado_preguntas =  {"¿Cuál es el río más largo de la Península Ibérica? \n\na) Tajo \nb) Guadiana \nc) Ebro  => " : "a",      "¿Cuál es el país más pequeño del mundo? \n\na) Francia b) Portugal c) El Vaticano  =>" : "c", 
-      "¿Cuántos océanos hay en la Tierra?  \n\na) Cuatro \nb) Cinco \nc) Tres  => " : "b",
-      "¿Qué país tiene más habitantes? \n\na) España \nb) Austria \nc) China  => " : "c",
-      "¿Qué país es el más grande del mundo? \n\na) Rusia \nb) Hungría \nc) Italia  => " : "a",
-      "¿Cuál es la montaña más alta del mundo? \n\na) Everest \nb) Kilimanjaro \nc) Teide  => " : "a",
-      "¿Cuál es el río más largo del mundo? \n\na) Nilo \nb) Amazonas \nc) Támesis  => " : "a",
-      "¿Cuál es la capital de Francia?  \n\na) Roma \nb) París \nc) Londres  => " : "b",
-      "¿Dónde podemos ver las auroras boreales?  \n\na) Finlandia \nb) Suiza \nc) Dinamarca  => " : "a",
-      "¿Cuál es la capital de España? \n\na) Barcelona \nb) Sevilla \nc) Madrid  => " : "c"}
+      listado_preguntas =  {"¿Cuál es el río más largo de la Península Ibérica? \n\na) Tajo \nb) Guadiana \nc) Ebro \n\n=> " : "a",      "¿Cuál es el país más pequeño del mundo? \n\na) Francia \nb) Portugal \nc) El Vaticano \n\n=>" : "c", 
+      "¿Cuántos océanos hay en la Tierra?  \n\na) Cuatro \nb) Cinco \nc) Tres  \n\n=> " : "b",
+      "¿Qué país tiene más habitantes? \n\na) España \nb) Austria \nc) China  \n\n=> " : "c",
+      "¿Qué país es el más grande del mundo? \n\na) Rusia \nb) Hungría \nc) Italia  \n\n=> " : "a",
+      "¿Cuál es la montaña más alta del mundo? \n\na) Everest \nb) Kilimanjaro \nc) Teide  \n\n=> " : "a",
+      "¿Cuál es el río más largo del mundo? \n\na) Nilo \nb) Amazonas \nc) Támesis  \n\n=> " : "a",
+      "¿Cuál es la capital de Francia?  \n\na) Roma \nb) París \nc) Londres  \n\n=> " : "b",
+      "¿Dónde podemos ver las auroras boreales?  \n\na) Finlandia \nb) Suiza \nc) Dinamarca \n\n=> " : "a",
+      "¿Cuál es la capital de España? \n\na) Barcelona \nb) Sevilla \nc) Madrid  \n\n=> " : "c"}
       
       os.system("clear")
       
@@ -294,7 +264,8 @@ class Juegos:
                 print("\n\n")
                 print(f"Lo sentimos {nombre}, te has quedado sin intentos")
                 print("=============================================")
-      
+
+      self.volver_a_jugar()
                 
   def piedra_papel_tijera(self,nombre):
         
@@ -314,12 +285,13 @@ class Juegos:
         os.system("clear")
         
         while True:
-            
+            os.system("clear")
             self.figura_Piedra_Papel_o_Tijera()
 
             print("=" * 11)               
             print("  RONDA", rondas)
             print("=" * 11)
+            print('')
         
             respuesta_jugador1 = input(f" {nombre} elige una opcion entre Piedra, Papel o Tijera =>  ").upper()
             print("\n")
@@ -328,7 +300,7 @@ class Juegos:
                 print("Esa opción no es válida\n")
                 input('Presiona "ENTER" para continuar')
                 print('')
-                os.system("clear")
+                #os.system("clear")
                 continue
         
             respuesta_jugador2 = random.choice(opciones)
@@ -378,27 +350,80 @@ class Juegos:
             print(f"Marcador {nombre} : ", jugador1_gana)
             print("Marcador Ordenador :", jugador2_gana)
             print('')
+
+            input('Presiona "ENTER" para continuar')
                       
             if jugador1_gana == 3:
+                os.system('clear')
                 print(f"\nFelicidades {nombre} eres GANADOR@ de la partida  !!!!\n")
-                print('              :)  :)  :)  :)  :)  :)\n\n')
+                print('              :)  :)  :)  :)  :)  :)\n')
                 break
     
             if jugador2_gana == 3:
+                os.system('clear')
                 print("\nEl ganador de la partida es el Ordenador\n")
-                print('        :(  :(  :(  :(  :(  :(\n\n')
+                print('        :(  :(  :(  :(  :(  :(\n')
                 break
             
-            input('Presiona "ENTER" para continuar')
-            print('')
-            os.system("clear")
+            # input('Presiona "ENTER" para continuar')
+            # print('')
+            # os.system("clear")
 
             rondas +=1
       
-      
+        
+        self.volver_a_jugar()
+
+
+
     
-  def salir ():
+  def salir (self):
       exit()
+
+
+
+  def volver_a_jugar(self):
+      volver_a_jugar = 0
+      while volver_a_jugar == 0:
+        
+        print('')
+        volver_al_menu = input(f'{nombre}, quieres volver a jugar?\n\nS : sí\n\nN : no\n\n=>  ').upper()
+
+        if volver_al_menu == 'S':
+          self.menu()
+          volver_a_jugar =1
+
+        elif volver_al_menu == 'N':
+            os.system("clear")
+            print(f'\n\n   ¡¡¡  Muchas gracias {nombre}  !!! \n\n  Esperamos volver a verte pronto. \n\n       :)  :)  :)  :)  :) '  )
+            print('\n\n')
+            input('Presiona "ENTER" para continuar')
+            os.system("clear")
+            self.salir()
+            volver_a_jugar=1
+
+        else:
+            print('\n\nERROR! La opción introducida no existe.')
+            print('\n')    
+
+  def figura_menu_inicio (self):
+      os.system("clear")
+      print("================================================================================")
+      print("=        xxxxxxx      xxxxxxx                                                  =")
+      print("=          xxxxx      xxxxx     xxxxx  xxxxx  xxx  xxx  xxxxxx  xxxxxx         =")
+      print("=             xxx    xxx        x      x   x  x  xx  x  x       x              =")
+      print("=               xxx xxx         x  xx  xxxxx  x   x  x  xxxxxx  xxxxxx         =")
+      print("=             xxx    xxx        x   x  x   x  x      x  x            x         =")
+      print("=          xxxxx      xxxxx     xxxxx  x   x  x      x  xxxxxx  xxxxxx         =")
+      print("=        xxxxxxx      xxxxxxx                                                  =")
+      print("================================================================================")
+      print("")
+      print(" Bienvenido a los juegos interactivos de X Games ")
+      print("================================================")
+      print("")  
+
+
+
 
   def figura_Piedra_Papel_o_Tijera (self):
         print("Piedra:                Papel:                   Tijera:           ")
@@ -543,9 +568,21 @@ class Jugador:
         self.nombre = nombre
         self.equipo = equipo
 
+os.system("clear")
+print("================================================================================")
+print("=        xxxxxxx      xxxxxxx                                                  =")
+print("=          xxxxx      xxxxx     xxxxx  xxxxx  xxx  xxx  xxxxxx  xxxxxx         =")
+print("=             xxx    xxx        x      x   x  x  xx  x  x       x              =")
+print("=               xxx xxx         x  xx  xxxxx  x   x  x  xxxxxx  xxxxxx         =")
+print("=             xxx    xxx        x   x  x   x  x      x  x            x         =")
+print("=          xxxxx      xxxxx     xxxxx  x   x  x      x  xxxxxx  xxxxxx         =")
+print("=        xxxxxxx      xxxxxxx                                                  =")
+print("================================================================================")
+print("")
+print(" Bienvenido a los juegos interactivos de X Games ")
+print("================================================")
+print("")
 
-
-print("dibujo inicio")
 
 #Introducimos los datos del usuario para identificar al jugador y a la consola.
 #Utilizamos la función input() para preguntar al usuario:
