@@ -1,7 +1,9 @@
+#Creamos una presentación para que el usuario interaccione con la lista de juegos disponibles y se inscriba como jugador.
+# Cargamos los siguientes módulos para poder usarlos en el código de los juegos:
+import os                       #  os nos proporcionará funciones para interacturar con el archivo o el sistema operativo.
+import random                   #  radom para generar funciones que impliquen elementos aleatorios.
 
-import os
-import random
-
+# MEJORA AÑADIDA: Definimos una clase con métodos que permiten al usuario interactuar con la presentación y lista de juegos.
 class Juegos:
 
   def __init__(self,nombre,equipo):
