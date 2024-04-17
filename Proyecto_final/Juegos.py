@@ -1,25 +1,29 @@
-#Creamos una presentación para que el usuario interaccione con la lista de juegos disponibles y se inscriba como jugador.
-# Cargamos los siguientes módulos para poder usarlos en el código de los juegos:
-import os                       #  os nos proporcionará funciones para interacturar con el archivo o el sistema operativo.
-import random                   #  radom para generar funciones que impliquen elementos aleatorios.
+#Crear presentación para que el usuario interaccione con la lista de juegos disponibles y se inscriba como jugador.
+# Cargar módulos necesarios en el código de los juegos:
+import os               #  os proporciona funciones para interacturar con el archivo o el sistema operativo.
+import random           #  radom para generar funciones que impliquen elementos aleatorios.
 
-# MEJORA AÑADIDA: Definimos una clase con métodos que permiten al usuario interactuar con la presentación y lista de juegos.
+
+
+#Crear una clase donde los métodos permitirán al usuario interactuar con el juego.
 
 class Juegos:
-
+#Definir los parametros nombre y equipo:
   def __init__(self,nombre,equipo):
       
       self.nombre = nombre
       self.equipo = equipo
       pass
 
-
+#Este método menu, permite al usuario interactuar con la lista de juego
   def menu(self):
+
 
     # Definimos una presentación gráfica del juego mediante el método print()
     
-    self.figura_menu_inicio()
+    self.figura_menu_inicio()  #imprimimos rotulo definido -lin-
     #Ofrecemos al usuario la lista de juegos disponibles:
+
 
     print("Listado de juegos")
     print("")
@@ -34,13 +38,13 @@ class Juegos:
 
     print("================================================")
 
-    #Le indicamos al jugador que seleccione un juego con la función input()
-    #El jugador, debe indicar el dígito asociado a cada juego:1,2,3,4
+#indicar al jugador que seleccione un juego con la función input()
+#El jugador, debe indicar el dígito asociado a cada juego:1,2,3,4
     
     seleccion=input(f"{nombre} elige uno de los juegos (1,2,3 o 4 para salir):  ")
 
-    #creamos una sentencia de control asociada a una funcion de cada juego:
-    #cada condición llama a la función del juego seleccionado.
+#crear una sentencia de control asociada a una funcion de cada juego:
+#cada condición llama a la función del juego seleccionado.
     if seleccion =="1":
         self.preguntas_y_respuestas(nombre)
    
@@ -50,6 +54,7 @@ class Juegos:
     elif seleccion =="3":
         self.piedra_papel_tijera(nombre)
 
+
     elif seleccion =="4":
         self.reglas_juego()    
 
@@ -57,10 +62,12 @@ class Juegos:
     #Esta función nos saca de la consola.
     elif seleccion =="5":      
         self.salir()      
+
    
     else:
-        print("No has elegido una opción valida")
+        print("No has elegido una opción valida") 
 
+#Definir los parámetros del juego Ahorcado:
 
   def ahorcado(self,nombre):
     intentos=10
@@ -81,8 +88,9 @@ class Juegos:
     ]
     
         
-    os.system("clear")
-    
+    os.system("clear")  #Limpiar pantalla.
+
+    #Imprir rótulo del juego seleccionado.
     print("=================================================================================")
     print("=                      _   _   _   _   _   _   _   _                            =")
     print("=                     / \ / \ / \ / \ / \ / \ / \ / \                           =")
@@ -98,44 +106,44 @@ class Juegos:
     os.system("clear")
 
 
-    palabra_aleatoria = random.choice(palabras_aleatorias).lower()  
-    palabra_guiones = "_"*len(palabra_aleatoria)
-    lista_palabra=list(palabra_aleatoria)
-    lista_guiones=list(palabra_guiones)
+    palabra_aleatoria = random.choice(palabras_aleatorias).lower()  #Genera una palabra aleatoria de las definidas antes.
+    palabra_guiones = "_"*len(palabra_aleatoria)         #oculta la palabra. Imprime un '_' por cada letra de la palabra.
+    lista_palabra=list(palabra_aleatoria)                #guarda la palabra seleccionada
+    lista_guiones=list(palabra_guiones)                  #guarda la palabra oculta 
 
-
+#Crear un bucle limitado por los aciertos e intentos
     
     while 0 < intentos <= 10 and acierto==False:
 
-      # Imprimir guiones sin letras
-
+      # Imprime la figura del ahorcado en funcion de los intentos. -lin.434-
         self.figura_Ahoracado(intentos)
     
         print(f"\nEstas son las letras ocultas de la palabra:   {' '.join(lista_guiones)}")
-        #letra_usada.append(letra)
+      #Imprime las letras seleccionadas por el usuario durante el juego.
         print(f'\n\nLas letras usadas hasta ahora son: {letra_usada}\n\n')
 
-      # preguntar al usuario la ltera
+      # preguntar al usuario la letra
         letra=input("Introduce una letra a ver si está en la palabra =>  ").lower()
-
+      #Usamos el condicional para buscar la letra seleccionada en la palabra oculta.
         if letra in lista_palabra:
           print(f'\n\nGenial! la letra {letra.upper()} está en la palabra oculta.')
           print("-------------------------------")
-          
-          aux=0 
+  
+         #crear un bucle for para buscar la letra en la palabra ocualta.  
+          aux=0  #metemos el indice en la variable aux.
           for i in lista_palabra:      
-            if i == letra:
-                lista_guiones[aux]=letra
+            if i == letra:                #Si encuentra coincidencia.
+                lista_guiones[aux]=letra  #Sustituye en la palabra oculta el '_' localizada con el indice, por la letra.
 
             aux += 1
             
-        else:
+        else:                              #Si no hay coincidencia de letra, resta un intento.
             intentos-=1
             print(f'\n\nNo, la letra {letra.upper()} no está.\n\n{nombre} te quedan {intentos} intentos.')
             print("-------------------------------")
     
-      # LETRAS ACERTADAS en el espacio correspondiente en lugar de guiones  
-        palabra_jugada = ''.join(lista_guiones)
+      # Imprimi la palabra con la letra encontrada 
+        palabra_jugada = ''.join(lista_guiones)      
     
       # Imprimir las letras usadas
         if letra not in letra_usada:
@@ -144,36 +152,38 @@ class Juegos:
         
         print('\n\n\n')
         input('Presiona "ENTER" para continuar')
-        os.system("clear")
+        os.system("clear")                   
 
         if palabra_jugada == palabra_aleatoria:
-            acierto = True
+            acierto = True                   #Para el bucle al coincidir la palabra adivinada con la oculta.
 
-    
+    #Imprime mensaje al usuario al completar el juego.
     if acierto == True:   
           print(f"\n  Felicidades {nombre} eres GANADOR@ de la partida  !!!!\n")
-          print(f'\n       La palabra oculta era {palabra_aleatoria.upper()}\n')
+          print(f'\n       La palabra oculta era {palabra_aleatoria.upper()}\n') #Imprime la palabra escondida.
           print('          :)  :)  :)  :)  :)  :)\n\n\n')
                     
              
     else:
           self.figura_Ahoracado(intentos)
           print(f"\n        Lo sentimos {nombre} PERDISTE \n")
-          print(f'\n       La palabra oculta era {palabra_aleatoria.upper()}.\n')
+          print(f'\n       La palabra oculta era {palabra_aleatoria.upper()}.\n') #Imprime la palabra escondida.
           print('          :(  :(  :(  :(  :(  :(\n\n\n')
           
     print('')
-
+    #pregunta al usuario si desea continuar.
     self.volver_a_jugar()
               
       
-  
+  #Define el método para el juego preguntas y respuestas.
   def preguntas_y_respuestas(self, nombre):
-    
+      
       intentos_juego = 3
       acertadas = 0
       ronda = 0
 
+      #Lista de preguntas aleatorias:
+       #cada pregunta es un diccionario con pregunta y opciones asociada a la respuesta correcta.
       listado_preguntas =  {"¿Cuál es el río más largo de la Península Ibérica? \n\na) Tajo \nb) Guadiana \nc) Ebro \n\n=> " : "a",      "¿Cuál es el país más pequeño del mundo? \n\na) Francia \nb) Portugal \nc) El Vaticano \n\n=>" : "c", 
       "¿Cuántos océanos hay en la Tierra?  \n\na) Cuatro \nb) Cinco \nc) Tres  \n\n=> " : "b",
       "¿Qué país tiene más habitantes? \n\na) España \nb) Austria \nc) China  \n\n=> " : "c",
@@ -183,9 +193,10 @@ class Juegos:
       "¿Cuál es la capital de Francia?  \n\na) Roma \nb) París \nc) Londres  \n\n=> " : "b",
       "¿Dónde podemos ver las auroras boreales?  \n\na) Finlandia \nb) Suiza \nc) Dinamarca \n\n=> " : "a",
       "¿Cuál es la capital de España? \n\na) Barcelona \nb) Sevilla \nc) Madrid  \n\n=> " : "c"}
-      
+
+      #limpia pantalla
       os.system("clear")
-      
+      #Imprir rótulo del juego seleccionado.  
       print("===============================================================================")
       print("=                    _   _   _   _   _   _   _   _                            =")
       print("=                   / \ / \ / \ / \ / \ / \ / \ / \                           =")
@@ -205,21 +216,24 @@ class Juegos:
       print(f"\n\n     ¡¡¡ {nombre} bienvenid@ al juego de Preguntas y respuestas !!!\n\n")    
       print("                    ¡¡¡¡   E M P E C E M O S  !!!\n\n\n")
       input('Presiona "ENTER" para continuar')
-      os.system("clear")
-      
+      os.system("clear") #limpia pantalla
+    #Crea bucle en funcion de los aciertos e intentos:  
       while intentos_juego > 0 and acertadas < 5:
 
-        os.system("clear")
-        ronda +=1
+        os.system("clear")  #limpia pantalla
+    #imprimimos la ronda en la que se encuentra el usuario.
+        ronda +=1    
 
         print("")            
         print("  RONDA", ronda)
         print("*" * 11)
         print('\n')
-    
+    #selecciona una pregunta al azar y la instanciamos en una variable
         pregunta = random.choice(list(listado_preguntas.keys()))
+    #Instanciamos la respuesta en minusculas
         respuesta = input(pregunta).lower()
-
+    
+        #crea un bucle donde compara la respuesta con la guardada   
         while respuesta != 'a' and respuesta != 'b' and respuesta != 'c':
             print("")
             print("")     
@@ -227,21 +241,23 @@ class Juegos:
             print("-------------------------------\n\n")
             respuesta = input('=> ')
             
+      
         if respuesta == listado_preguntas.get(pregunta):
-            acertadas +=1
+            acertadas +=1    #aumenta los aciertos
             print("")
             print("")
             print(f"Muy bien {nombre}! Has acertado la pregunta. \n\nSigue jugando, ya tienes {acertadas} aciertos")
             print("-------------------------------")
             print("")
             print("")
-            
+    #Elimina la pregunta para evitar repeticiones.      
             listado_preguntas.pop(pregunta)
 
             input('Presiona "ENTER" para continuar')
-                  
+    #Crea condición que finaliza el juego:      
             if acertadas ==5:
-                os.system("clear")
+                os.system("clear")     #limpia pantalla
+    #Imprime felicitación.
                 print("\n")
                 print("              ===   ===                      ")
                 print("             |  _| |  _|                     ")
@@ -257,7 +273,8 @@ class Juegos:
         
         
         else:
-            intentos_juego -= 1
+            intentos_juego -= 1  #resta intentos
+    #Crea condición que finaliza el juego:        
             if intentos_juego !=0: 
                 print("")
                 print("")     
@@ -268,7 +285,8 @@ class Juegos:
                 input('Presiona "ENTER" para continuar')
                 
             else:
-                os.system("clear")
+                os.system("clear")   #limpia pantalla
+    #imprime no superación del juego
                 print("\n")
                 print("               ===   ===          ")
                 print("              |  _| |  _|         ")
@@ -285,50 +303,57 @@ class Juegos:
           
 
       self.volver_a_jugar()
-                
+
+    #Define el método para el juego preguntas y respuestas.            
   def piedra_papel_tijera(self,nombre):
         
-        os.system("clear")
-        
+        os.system("clear")     #limpia pantalla
+    #Crea tupla con las opciones del juego.    
         opciones = ("PIEDRA", "PAPEL", "TIJERA")
-
+    
         rondas = 1
         jugador1_gana = 0
         jugador2_gana = 0
-
+    
+    #Imprir rótulo del juego seleccionado. 
         print(f"\n\n¡¡¡ {nombre} bienvenid@ al juego de Piedra, Papel o Tijera !!!\n\n")
         print(f'                       S U E R T E     \n\n\n')
+    #llamamos a la funcion que imprime parte del rotulo del juego.   
         self.figura_Piedra_Papel_o_Tijera()
         print('')
         input('Presiona "ENTER" para continuar')
-        os.system("clear")
+        os.system("clear")      #limpia pantalla
         
         while True:
             os.system("clear")
-            self.figura_Piedra_Papel_o_Tijera()
+            self.figura_Piedra_Papel_o_Tijera()  #imprime dibujo decorativo
+
 
             print("=" * 11)               
             print("  RONDA", rondas)
             print("=" * 11)
             print('')
         
+           #pregunta al usuario e instancia la respuesta.
             respuesta_jugador1 = input(f" {nombre} elige una opcion entre Piedra, Papel o Tijera =>  ").upper()
             print("\n")
-               
+            #Busca coincidencia de la respuesta con las opciones.
             if respuesta_jugador1 not in opciones:
                 print("Esa opción no es válida\n")
                 input('Presiona "ENTER" para continuar')
                 print('')
-                continue
+                continue   #Permite continuar sin problema con la respuesta.
+            #selecciona una opcion aleatoria:
         
             respuesta_jugador2 = random.choice(opciones)
-
+            #Imprime dibujo decorativo:
             print(f'Respuesta {nombre}      vs      Respuesta Ordenador')
             print('      |                                |          ')
             print('     \|/                              \|/         ')
             print('      \'                                \'          ')
-            print(f'    {respuesta_jugador1}                           {respuesta_jugador2}\n')
-        
+            print(f'    {respuesta_jugador1}                           {respuesta_jugador2}\n') #imprime respuestas del jugador y aleatoria
+            #Crea sentencia de control que busca coincidencia con las respuestas.
+            #Define las coincidencias ganadoras.m
             if respuesta_jugador1 == respuesta_jugador2:
                 print("\nEMPATE!\n")
         
@@ -336,55 +361,56 @@ class Juegos:
                 if respuesta_jugador2 == "TIJERA":
                     print("\nPIEDRA gana a TIJERA\n")
                     print(f"{nombre} ganas !!!\n")
-                    jugador1_gana +=1
+                    jugador1_gana +=1   
         
                 else:
                     print("\nPAPEL gana a PIEDRA\n")
                     print("El Ordenador gana!!!\n")
-                    jugador2_gana +=1
+                    jugador2_gana +=1   
         
             elif respuesta_jugador1 == "PAPEL":
                 if respuesta_jugador2 == "PIEDRA":
                     print("\nPAPEL gana a PIEDRA\n")
                     print(f"{nombre} ganas !!!\n")
-                    jugador1_gana +=1
+                    jugador1_gana +=1    
             
                 else:
                     print("\nTIJERA gana a PAPEL\n")
                     print("El Ordenador gana!!!\n")
-                    jugador2_gana +=1
+                    jugador2_gana +=1    
              
             elif respuesta_jugador1 == "TIJERA":
                 if respuesta_jugador2 == "PAPEL":
                     print("\nTIJERA gana a PAPEL\n")
                     print(f"{nombre} ganas !!!\n")
-                    jugador1_gana +=1
+                    jugador1_gana +=1    
 
                 else:
                     print("\nPIEDRA gana a TIJERA\n")
                     print("El Ordenador gana!!!\n")
-                    jugador2_gana +=1    
-            
+                    jugador2_gana +=1     
+            #imprime marcadores de puntos.
             print(f"Marcador {nombre} : ", jugador1_gana)
             print("Marcador Ordenador :", jugador2_gana)
             print('')
 
             input('Presiona "ENTER" para continuar')
-                      
-            if jugador1_gana == 3:
+  
+            #Sentencia de control que finaliza el el juego                      
+            if jugador1_gana == 3:  #compara puntos jugador.
                 os.system('clear')
                 print(f"\nFelicidades {nombre} eres GANADOR@ de la partida  !!!!\n")
                 print('              :)  :)  :)  :)  :)  :)\n')
-                break
+                break  #Detiene el juego
     
-            if jugador2_gana == 3:
+            if jugador2_gana == 3:  #compara puntos del ordenador.
                 os.system('clear')
                 print("\nEl ganador de la partida es el Ordenador\n")
                 print('        :(  :(  :(  :(  :(  :(\n')
-                break
+                break  #Detiene el juego 
             
             
-            rondas +=1
+            rondas +=1  #suma ronda por ciclo
       
         
         self.volver_a_jugar()
@@ -396,25 +422,29 @@ class Juegos:
       exit()
 
 
-
+#Define función que permite al jugador volver a jugar
   def volver_a_jugar(self):
       volver_a_jugar = 0
+      
+      #Define ciclo while 
       while volver_a_jugar == 0:
-        
         print('')
+
+         #pregunta al usuario con funcíón input()
         volver_al_menu = input(f'{nombre}, quieres volver a jugar?\n\nS : sí\n\nN : no\n\n=>  ').upper()
 
         if volver_al_menu == 'S':
+          #llama a la función menu del comienzo juego.
           self.menu()
           volver_a_jugar =1
 
         elif volver_al_menu == 'N':
-            os.system("clear")
+            os.system("clear") #limpia pantalla
             print(f'\n\n   ¡¡¡  Muchas gracias {nombre}  !!! \n\n  Esperamos volver a verte pronto. \n\n       :)  :)  :)  :)  :) '  )
             print('\n\n')
             input('Presiona "ENTER" para continuar')
-            os.system("clear")
-            self.salir()
+            os.system("clear") #limpia pantalla.
+            self.salir()       #llama a funcion de salida.
             volver_a_jugar=1
 
         else:
@@ -468,6 +498,8 @@ class Juegos:
       
       self.menu()
    
+
+    #función que imprime dibujo rótulo:
   def figura_menu_inicio (self):
       os.system("clear")
       print("================================================================================")
@@ -486,7 +518,7 @@ class Juegos:
 
 
 
-
+#función que imprime dibujos decorativos:
   def figura_Piedra_Papel_o_Tijera (self):
         print("Piedra:                Papel:                   Tijera:           ")
         print("    _______             _______                  _______          ")
@@ -497,6 +529,7 @@ class Juegos:
         print("---.__(___)        ---.__________)          ---.__(___)           ")
         print("\n")
 
+#función que define las etapas de vida de juego Ahorcado:
   def figura_Ahoracado(self, vidas):
         figura=[
          '''
@@ -612,7 +645,7 @@ class Juegos:
         print(figura[vidas])
       
       
-  
+#MEJORA. Lista de jugadores  
 class Jugadores:
   
   def __init__(self):
