@@ -22,7 +22,9 @@ class Juegos:
     print("  1. Preguntas y respuestas")
     print("  2. Ahorcado")
     print("  3. Piedra,papel o tijera")
-    print("  4. Salir")
+    print('')
+    print('  4. Reglas de los juegos')
+    print("  5. Salir")
     print("")
     print("")
 
@@ -44,9 +46,12 @@ class Juegos:
     elif seleccion =="3":
         self.piedra_papel_tijera(nombre)
 
+    elif seleccion =="4":
+        self.reglas_juego()    
+
     #Le damos la opción al jugador de salir del juego.
     #Esta función nos saca de la consola.
-    elif seleccion =="4":      
+    elif seleccion =="5":      
         self.salir()      
    
     else:
@@ -111,6 +116,7 @@ class Juegos:
 
         if letra in lista_palabra:
           print(f'\n\nGenial! la letra {letra.upper()} está en la palabra oculta.')
+          print("-------------------------------")
           
           aux=0 
           for i in lista_palabra:      
@@ -122,15 +128,16 @@ class Juegos:
         else:
             intentos-=1
             print(f'\n\nNo, la letra {letra.upper()} no está.\n\n{nombre} te quedan {intentos} intentos.')
+            print("-------------------------------")
     
       # LETRAS ACERTADAS en el espacio correspondiente en lugar de guiones  
         palabra_jugada = ''.join(lista_guiones)
     
       # Imprimir las letras usadas
-        letra_usada.append(letra)
-        letra_usada.sort()
-        # print(f'\n\nLas letras usadas hasta ahora son: {letra_usada}\n\n')
-
+        if letra not in letra_usada:
+          letra_usada.append(letra)
+          letra_usada.sort()
+        
         print('\n\n\n')
         input('Presiona "ENTER" para continuar')
         os.system("clear")
@@ -208,8 +215,14 @@ class Juegos:
     
         pregunta = random.choice(list(listado_preguntas.keys()))
         respuesta = input(pregunta).lower()
-    
-       
+
+        while respuesta != 'a' and respuesta != 'b' and respuesta != 'c':
+            print("")
+            print("")     
+            print(f"ERROR! {nombre}, la opción que has intorducido no existe.\n\nVuelve a intentaerlo. Introduce 'a', 'b' o 'c.")
+            print("-------------------------------\n\n")
+            respuesta = input('=> ')
+            
         if respuesta == listado_preguntas.get(pregunta):
             acertadas +=1
             print("")
@@ -237,7 +250,8 @@ class Juegos:
                 print("\n\n")
                 print(f"Felicidades {nombre}!!!, has ganado el juego!\n")
                 print("=============================================")
-    
+        
+        
         else:
             intentos_juego -= 1
             if intentos_juego !=0: 
@@ -264,6 +278,7 @@ class Juegos:
                 print("\n\n")
                 print(f"Lo sentimos {nombre}, te has quedado sin intentos")
                 print("=============================================")
+          
 
       self.volver_a_jugar()
                 
@@ -300,7 +315,6 @@ class Juegos:
                 print("Esa opción no es válida\n")
                 input('Presiona "ENTER" para continuar')
                 print('')
-                #os.system("clear")
                 continue
         
             respuesta_jugador2 = random.choice(opciones)
@@ -365,10 +379,7 @@ class Juegos:
                 print('        :(  :(  :(  :(  :(  :(\n')
                 break
             
-            # input('Presiona "ENTER" para continuar')
-            # print('')
-            # os.system("clear")
-
+            
             rondas +=1
       
         
@@ -406,6 +417,53 @@ class Juegos:
             print('\n\nERROR! La opción introducida no existe.')
             print('\n')    
 
+  def reglas_juego(self):
+      os.system("clear")
+      self.figura_menu_inicio()
+      print('')
+      print('''1. PREGUNTAS Y RESPUESTAS:
+            
+   DESCRIPCIÓN:
+    - El juego va a constar de 10 preguntas aleatorias sobre geografía.
+    - Cada pregunta tendrá tres opciones de respuesta (a, b, c) y sólo una será correcta.
+    - Se obtiene un punto por cada respuesta acertada.
+
+   REGLAS DEL JUEGO:
+    - El jugador tendrá dos intentos por cada pregunta.
+    - El jugador empieza con 3 vidas y se le restará una cada vez que conteste incorrectamente una pregunta.
+    - El juego termina si el jugador pierde todas sus vidas o si responde a 5 preguntas correctamente.
+            
+
+2. AHORCADO:
+            
+   DESCRIPCIÓN:
+    - El jugador tiene que adivinar una palabra.
+    - El jugador tiene que ir adivinando letras hasta completar la palabra.
+
+   REGLAS DEL JUEGO:
+    - El jugador tiene 10 vidas.
+    - Por cada fallo se dibuja una parte del cuerpo en la horca y se pierde una vida.
+    - El juego termina si el jugador adivina la palabra o si se dibuja el cuerpo entero en la horca y el jugador pierde todas sus vidas.
+            
+            
+3. PIEDRA, PAPEL O TIJERA
+            
+   DESCRIPCIÓN:
+    - Dos jugadores eligen una de las tres opciones: "Piedra", "Papel" o "Tijera"
+    - Se obtiene un punto por cada ronda ganada.
+    - Gana el jugador que consiga 3 puntos.
+
+   REGLAS DEL JUEGO:
+    - Piedra vence a Tijera.
+    - Tijera vence a Papel.
+    - Papel vence a piedra
+            ''')
+      print('')
+      print("-------------------------------")
+      input('Presiona "ENTER" para continuar')
+      
+      self.menu()
+   
   def figura_menu_inicio (self):
       os.system("clear")
       print("================================================================================")
