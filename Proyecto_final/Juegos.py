@@ -39,12 +39,15 @@ class Juegos:
     print("================================================")
 
 #indicar al jugador que seleccione un juego con la función input()
-#El jugador, debe indicar el dígito asociado a cada juego:1,2,3,4
+#El jugador, debe indicar el dígito asociado a cada juego:1,2,3
+#O 4 y 5 para las reglas y salir del juego
     
-    seleccion=input(f"{nombre} elige uno de los juegos (1,2,3 o 4 para salir):  ")
+    seleccion=input(f"{nombre} elige uno de los juegos (1,2,3 o 4 reglas y 5 salir):  ")
 
 #crear una sentencia de control asociada a una funcion de cada juego:
 #cada condición llama a la función del juego seleccionado.
+
+   
     if seleccion =="1":
         self.preguntas_y_respuestas(nombre)
    
